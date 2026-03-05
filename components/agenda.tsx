@@ -15,7 +15,7 @@ export default function Agenda() {
                             speedSegment={0.3}
                             as="h2"
                             className="mb-4 text-3xl font-semibold md:text-4xl">
-                            Hoja de Ruta
+                            HOJA DE RUTA
                         </TextEffect>
                     </div>
 
@@ -37,7 +37,7 @@ export default function Agenda() {
                         <div className="pb-6">
                             <div className="font-medium space-x-2">
                                 <span className='text-muted-foreground font-mono '>Q1</span>
-                                <span>Conformacion de Sociedad</span>
+                                <span>Conformación de Sociedad</span>
                             </div>
                             <p className="text-muted-foreground mt-4">Acuerdo pre-societario, alta de sociedad y publicación en boletín oficial.</p>
                         </div>

@@ -5,28 +5,24 @@ import { transitionVariants } from "@/lib/utils";
 
 const founders = [
   {
-    name: "Founder Name",
+    name: "Ignacio del Corro",
     role: "Co-Founder & CEO",
     image: "/images/founder-1.jpg",
-    bio: "Short description about this founder and their role in the company.",
   },
   {
-    name: "Founder Name",
+    name: "Henry Rosales",
     role: "Co-Founder & CTO",
     image: "/images/founder-2.jpg",
-    bio: "Short description about this founder and their role in the company.",
   },
   {
-    name: "Founder Name",
+    name: "Joaquin Cortez",
     role: "Co-Founder & COO",
     image: "/images/founder-3.jpg",
-    bio: "Short description about this founder and their role in the company.",
   },
   {
-    name: "Founder Name",
-    role: "Co-Founder & CPO",
+    name: "Alex Rosenfeld",
+    role: "Co-Founder & CO",
     image: "/images/founder-4.jpg",
-    bio: "Short description about this founder and their role in the company.",
   },
 ];
 
@@ -42,17 +38,7 @@ export default function CallToAction() {
             as="h2"
             className="text-balance text-4xl font-semibold lg:text-5xl"
           >
-            Meet the Founders
-          </TextEffect>
-          <TextEffect
-            triggerOnView
-            preset="fade-in-blur"
-            speedSegment={0.3}
-            delay={0.3}
-            as="p"
-            className="mt-4 text-muted-foreground"
-          >
-            The team behind the vision.
+            EL EQUIPO DETRAS DE LA VISION
           </TextEffect>
         </div>
 
