@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 function decryptLanyardData(
   encrypted: string
 ): { username: string; variant: "dark" | "light" } | null {
-  const OBFUSCATION_KEY = "v0gdl";
+  const OBFUSCATION_KEY = "reflecter";
 
   if (!encrypted) return null;
   try {
@@ -34,29 +34,28 @@ function decryptLanyardData(
   }
 }
 
-async function loadGoogleFont (font: string, text: string) {
-    const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
-    const css = await (await fetch(url)).text()
-    const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/)
+async function loadGoogleFont(font: string, text: string) {
+  const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
+  const css = await (await fetch(url)).text()
+  const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/)
 
-    if (resource) {
-        const response = await fetch(resource[1])
+  if (resource) {
+    const response = await fetch(resource[1])
 
-        if (response.status == 200) {
-            return await response.arrayBuffer()
-        }
+    if (response.status == 200) {
+      return await response.arrayBuffer()
     }
+  }
 
-    throw new Error('failed to load font data')
+  throw new Error('failed to load font data')
 }
 
 export async function GET(request: Request) {
   try {
-
-      // Event details - you can edit these
-      const EVENT_CITY = "guadalajara";
-      const EVENT_DATE = "jueves 5 de febrero";
-      const TITLE = 'Prompt to Production'
+    // Event details
+    const EVENT_CITY = "Córdoba";
+    const EVENT_DATE = "Marzo 2026";
+    const TITLE = 'REFLECTER LABS'
 
     const { searchParams } = new URL(request.url);
     const encrypted = searchParams.get("u");
@@ -93,76 +92,74 @@ export async function GET(request: Request) {
             alignItems: "flex-start",
             justifyContent: "center",
             backgroundColor: bgColor,
-              fontFamily: 'Geist',
-              fontSize: 48,
+            fontFamily: 'Geist',
+            fontSize: 48,
             padding: "60px",
           }}
         >
           <div style={{
-              display: 'flex',
-              gap: '36px',
-              alignItems: 'center'
+            display: 'flex',
+            gap: '36px',
+            alignItems: 'center'
           }}>
-            <svg height="170" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" viewBox="0 0 16 16">
-                <path clip-rule="evenodd" d="M9.50321 5.5H13.2532C13.3123 5.5 13.3704 5.5041 13.4273 5.51203L9.51242 9.42692C9.50424 9.36912 9.5 9.31006 9.5 9.25L9.5 5.5L8 5.5L8 9.25C8 10.7688 9.23122 12 10.75 12H14.5V10.5L10.75 10.5C10.6899 10.5 10.6309 10.4958 10.5731 10.4876L14.4904 6.57028C14.4988 6.62897 14.5032 6.68897 14.5032 6.75V10.5H16.0032V6.75C16.0032 5.23122 14.772 4 13.2532 4H9.50321V5.5ZM0 5V5.00405L5.12525 11.5307C5.74119 12.3151 7.00106 11.8795 7.00106 10.8822V5H5.50106V9.58056L1.90404 5H0Z" fill="white" fill-rule="evenodd"/>
+            <svg width="120" height="120" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 0H5V18H3V0ZM13 0H15V18H13V0ZM18 3V5H0V3H18ZM0 15V13H18V15H0Z" fill={textColor} />
             </svg>
-              <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-              }}>
-                <span style={{
-                    color: textColor,
-                    textTransform: 'uppercase',
-                    lineHeight: '56px',
-                }}>{EVENT_CITY}</span>
-                <span style={{
-                    color: accentColor,
-                    textTransform: 'uppercase',
-                    lineHeight: '56px'
-                }}>{EVENT_DATE}</span>
-              </div>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
+              <span style={{
+                color: textColor,
+                textTransform: 'uppercase',
+                lineHeight: '56px',
+              }}>{EVENT_CITY}</span>
+              <span style={{
+                color: accentColor,
+                textTransform: 'uppercase',
+                lineHeight: '56px'
+              }}>{EVENT_DATE}</span>
+            </div>
           </div>
-            <div style={{
-                display: 'flex',
-                gap: '36px',
-                marginBottom: '32px'
+          <div style={{
+            display: 'flex',
+            gap: '36px',
+            marginBottom: '48px',
+            marginTop: '48px'
+          }}>
+            <span style={{
+              color: textColor,
+              fontSize: '110px',
+              lineHeight: '110px',
+              fontWeight: 'bold',
             }}>
-                <span style={{
-                    color: textColor,
-                    fontSize: '130px',
-                    lineHeight: '122px',
-                }}>
-                    {TITLE}
-                </span>
-            </div>
-            <div style={{
-                display: 'flex',
-                gap: '36px',
+              {TITLE}
+            </span>
+          </div>
+          <div style={{
+            display: 'flex',
+            gap: '36px',
+          }}>
+            <span style={{
+              color: accentColor,
+              lineHeight: '56px',
+              textTransform: 'uppercase'
             }}>
-                <span style={{
-                    color: accentColor,
-                    lineHeight: '56px',
-                    textTransform: 'uppercase'
-                }}>
-                    {userName}
-                </span>
-            </div>
+              {userName}
+            </span>
+          </div>
         </div>
       ),
       {
         width,
         height,
-          fonts: [
-              {
-                  name: 'Geist',
-                  data: await loadGoogleFont('Geist', TITLE),
-                  style: 'normal',
-              },{
-                  name: 'Geist',
-                  data: await loadGoogleFont('Geist', userName),
-                  style: 'normal',
-              },
-          ],
+        fonts: [
+          {
+            name: 'Geist',
+            data: await loadGoogleFont('Geist', TITLE + userName + EVENT_CITY + EVENT_DATE),
+            style: 'normal',
+          }
+        ],
       }
     );
   } catch (e) {

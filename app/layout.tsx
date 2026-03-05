@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         siteName: 'Reflecter Labs',
         images: [
             {
-                url: '/og-image.png', // Needs to be generated or provided
+                url: '/Portada.png',
                 width: 1200,
                 height: 630,
                 alt: 'Reflecter Labs - Agentic Blockchain Laboratory',
@@ -68,8 +68,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Reflecter Labs | Laboratorio Blockchain Agéntico',
-        description: 'Infraestructura Web3 y sistemas agénticos desde el corazón de Argentina.',
-        images: ['/og-image.png'],
+        images: ['/Portada.png'],
         creator: '@reflecterlabs',
     },
     other: {
