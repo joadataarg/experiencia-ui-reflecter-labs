@@ -23,6 +23,18 @@ const cardGLB = '/card.glb';
 
 extend({MeshLineGeometry, MeshLineMaterial});
 
+// Suppress known upstream warning from @dimforge/rapier3d-compat WASM init
+// See: https://github.com/dimforge/rapier/issues/811
+if (typeof window !== 'undefined') {
+    const originalWarn = console.warn;
+    console.warn = (...args: Parameters<typeof console.warn>) => {
+        if (typeof args[0] === 'string' && args[0].includes('using deprecated parameters for the initialization function')) {
+            return;
+        }
+        originalWarn.apply(console, args);
+    };
+}
+
 interface LanyardProps {
     position?: [number, number, number];
     gravity?: [number, number, number];
