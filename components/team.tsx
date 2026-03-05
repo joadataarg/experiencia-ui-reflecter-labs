@@ -25,7 +25,7 @@ const founders = [
   {
     name: "Alex Rosenfeld",
     role: "Co-Founder & CO",
-    image: "/images/founder-4.jpg",
+    image: "/images/founder-4.jpeg",
   },
 ];
 

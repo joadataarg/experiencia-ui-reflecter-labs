@@ -188,7 +188,7 @@ const dictionaries = {
         date: "2026-02-28",
         category: "Tecnología",
         readTime: 8,
-        image: "/blog/starknet.webp",
+        image: "/blog/starknet.png",
       },
       {
         slug: "smart-contracts-seguridad",
@@ -197,7 +197,7 @@ const dictionaries = {
         date: "2026-02-20",
         category: "Seguridad",
         readTime: 12,
-        image: "/blog/security.webp",
+        image: "/blog/security.png",
       },
       {
         slug: "defi-latam",
@@ -206,7 +206,7 @@ const dictionaries = {
         date: "2026-02-10",
         category: "DeFi",
         readTime: 10,
-        image: "/blog/defi-latam.webp",
+        image: "/blog/defi-latam.png",
       },
       {
         slug: "tokenizacion-activos-reales",
@@ -215,7 +215,7 @@ const dictionaries = {
         date: "2026-01-28",
         category: "Tokenización",
         readTime: 9,
-        image: "/blog/rwa.webp",
+        image: "/blog/rwa.png",
       },
       {
         slug: "monad-evm-paralelo",
@@ -224,7 +224,7 @@ const dictionaries = {
         date: "2026-01-15",
         category: "Tecnología",
         readTime: 7,
-        image: "/blog/monad.webp",
+        image: "/blog/monad.png",
       },
       {
         slug: "identidad-descentralizada",
@@ -233,7 +233,7 @@ const dictionaries = {
         date: "2026-01-05",
         category: "Identidad",
         readTime: 11,
-        image: "/blog/did.webp",
+        image: "/blog/did.png",
       },
     ],
   },
@@ -416,7 +416,7 @@ const dictionaries = {
         date: "2026-02-28",
         category: "Technology",
         readTime: 8,
-        image: "/blog/starknet.webp",
+        image: "/blog/starknet.png",
       },
       {
         slug: "smart-contracts-seguridad",
@@ -425,7 +425,7 @@ const dictionaries = {
         date: "2026-02-20",
         category: "Security",
         readTime: 12,
-        image: "/blog/security.webp",
+        image: "/blog/security.png",
       },
       {
         slug: "defi-latam",
@@ -434,7 +434,7 @@ const dictionaries = {
         date: "2026-02-10",
         category: "DeFi",
         readTime: 10,
-        image: "/blog/defi-latam.webp",
+        image: "/blog/defi-latam.png",
       },
       {
         slug: "tokenizacion-activos-reales",
@@ -443,7 +443,7 @@ const dictionaries = {
         date: "2026-01-28",
         category: "Tokenization",
         readTime: 9,
-        image: "/blog/rwa.webp",
+        image: "/blog/rwa.png",
       },
       {
         slug: "monad-evm-paralelo",
@@ -452,7 +452,7 @@ const dictionaries = {
         date: "2026-01-15",
         category: "Technology",
         readTime: 7,
-        image: "/blog/monad.webp",
+        image: "/blog/monad.png",
       },
       {
         slug: "identidad-descentralizada",
@@ -461,7 +461,7 @@ const dictionaries = {
         date: "2026-01-05",
         category: "Identity",
         readTime: 11,
-        image: "/blog/did.webp",
+        image: "/blog/did.png",
       },
     ],
   },
@@ -644,7 +644,7 @@ const dictionaries = {
         date: "2026-02-28",
         category: "Tecnologia",
         readTime: 8,
-        image: "/blog/starknet.webp",
+        image: "/blog/starknet.png",
       },
       {
         slug: "smart-contracts-seguridad",
@@ -653,7 +653,7 @@ const dictionaries = {
         date: "2026-02-20",
         category: "Segurança",
         readTime: 12,
-        image: "/blog/security.webp",
+        image: "/blog/security.png",
       },
       {
         slug: "defi-latam",
@@ -662,7 +662,7 @@ const dictionaries = {
         date: "2026-02-10",
         category: "DeFi",
         readTime: 10,
-        image: "/blog/defi-latam.webp",
+        image: "/blog/defi-latam.png",
       },
       {
         slug: "tokenizacion-activos-reales",
@@ -671,7 +671,7 @@ const dictionaries = {
         date: "2026-01-28",
         category: "Tokenização",
         readTime: 9,
-        image: "/blog/rwa.webp",
+        image: "/blog/rwa.png",
       },
       {
         slug: "monad-evm-paralelo",
@@ -680,7 +680,7 @@ const dictionaries = {
         date: "2026-01-15",
         category: "Tecnologia",
         readTime: 7,
-        image: "/blog/monad.webp",
+        image: "/blog/monad.png",
       },
       {
         slug: "identidad-descentralizada",
@@ -689,7 +689,7 @@ const dictionaries = {
         date: "2026-01-05",
         category: "Identidade",
         readTime: 11,
-        image: "/blog/did.webp",
+        image: "/blog/did.png",
       },
     ],
   },
