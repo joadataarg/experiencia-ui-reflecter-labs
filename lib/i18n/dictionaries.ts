@@ -124,7 +124,7 @@ const dictionaries = {
     },
     contact: {
       title: "Contacto",
-      intro: "Tienes un proyecto en mente o quieres saber cómo podemos ayudarte? Escríbenos y nuestro equipo se pondrá en contacto contigo.",
+      intro: "Estamos listos para llevar tu proyecto al siguiente nivel. ¿Hablamos? Agenda una llamada de 15 minutos con nuestro equipo técnico para explorar cómo podemos colaborar.",
       contactInfo: "Información de contacto",
       hours: "Horario de atención",
       monFri: "Lunes - Viernes",
@@ -352,7 +352,7 @@ const dictionaries = {
     },
     contact: {
       title: "Contact",
-      intro: "Have a project in mind or want to know how we can help? Write to us and our team will get in touch.",
+      intro: "We're ready to take your project to the next level. Let's talk! Schedule a 15-minute call with our technical team to explore how we can collaborate.",
       contactInfo: "Contact information",
       hours: "Business hours",
       monFri: "Monday - Friday",
@@ -580,7 +580,7 @@ const dictionaries = {
     },
     contact: {
       title: "Contato",
-      intro: "Tem um projeto em mente ou quer saber como podemos ajudar? Escreva-nos e nossa equipe entrará em contato.",
+      intro: "Estamos prontos para levar seu projeto ao próximo nível. Vamos conversar? Agende uma chamada de 15 minutos com nossa equipe técnica para explorar como podemos colaborar.",
       contactInfo: "Informações de contato",
       hours: "Horário de atendimento",
       monFri: "Segunda - Sexta",

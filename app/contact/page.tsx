@@ -1,30 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, MapPin, Phone, Send, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Phone, Calendar } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ContactPage() {
   const { t } = useLocale();
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Placeholder - connect to your backend/email service
-    setSubmitted(true);
-  };
 
   return (
     <main className="relative z-10 pt-32 pb-20">
@@ -84,124 +66,33 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* Unified Contact CTA */}
           <div className="lg:col-span-3">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-border p-12 text-center bg-background/30 backdrop-blur-sm shadow-xl">
-                <CheckCircle className="h-12 w-12 text-primary" />
-                <h2 className="mt-4 font-mono text-xl font-semibold text-foreground">
-                  {t.common.messageSent}
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {t.contact.thankYou}
-                </p>
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormState({ name: "", email: "", subject: "", message: "" });
-                  }}
-                  className="mt-6 font-mono text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
-                >
-                  {t.common.sendAnother}
-                </button>
+            <div className="flex flex-col items-center justify-center h-full gap-8 rounded-2xl border border-border p-8 lg:p-12 bg-background/20 backdrop-blur-sm shadow-sm text-center">
+              <div className="max-w-md">
+                <h3 className="font-mono text-2xl font-semibold text-foreground">
+                  {t.cta.heading}
+                </h3>
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-5 rounded-2xl border border-border p-6 lg:p-8 bg-background/20 backdrop-blur-sm shadow-sm"
+
+              <Button
+                asChild
+                size="lg"
+                className="group relative h-14 px-8 font-mono text-base font-bold uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
               >
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="name"
-                      className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                    >
-                      {t.contact.name}
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={handleChange}
-                      placeholder={t.contact.namePlaceholder}
-                      className="h-10 rounded-lg border border-border bg-background px-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all duration-200"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="email"
-                      className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                    >
-                      {t.contact.email}
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={handleChange}
-                      placeholder={t.contact.emailPlaceholder}
-                      className="h-10 rounded-lg border border-border bg-background px-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all duration-200"
-                    />
-                  </div>
-                </div>
+                <Link href={t.common.calendarLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                  <Calendar className="h-5 w-5 transition-transform group-hover:rotate-12" />
+                  <span>{t.common.bookCall}</span>
+                </Link>
+              </Button>
 
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="subject"
-                    className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                  >
-                    {t.contact.subject}
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formState.subject}
-                    onChange={handleChange}
-                    className="h-10 rounded-lg border border-border bg-background px-3 font-mono text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all duration-200"
-                  >
-                    <option value="" disabled>
-                      {t.contact.selectSubject}
-                    </option>
-                    <option value="proyecto">{t.contact.subjectProject}</option>
-                    <option value="colaboracion">{t.contact.subjectCollab}</option>
-                    <option value="soporte">{t.contact.subjectSupport}</option>
-                    <option value="otro">{t.contact.subjectOther}</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="message"
-                    className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                  >
-                    {t.contact.message}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    value={formState.message}
-                    onChange={handleChange}
-                    placeholder={t.contact.messagePlaceholder}
-                    className="resize-none rounded-lg border border-border bg-background px-3 py-2.5 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all duration-200"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="flex h-11 items-center justify-center gap-3 rounded-lg bg-foreground px-6 font-mono text-sm font-bold uppercase tracking-widest text-background transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
-                >
-                  <Send className="h-4 w-4" />
-                  <span>{t.common.sendMessage}</span>
-                </button>
-              </form>
-            )}
+              <div className="mt-4 flex flex-col items-center gap-2">
+                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground/60">
+                  Powered by Reflecter Labs
+                </p>
+                <div className="h-px w-12 bg-border"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
