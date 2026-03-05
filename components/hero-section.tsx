@@ -7,8 +7,6 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
-import V0Icon from "@/components/icons/v0-icon";
-import VercelWordmarkIcon from "@/components/icons/vercel-wordmark-icon";
 import GlobantLogoIcon from "@/components/icons/globant-logo-icon";
 import DecryptedText from "@/components/DecryptedText";
 import { transitionVariants } from "@/lib/utils";
@@ -118,10 +116,7 @@ export default function HeroSection() {
                                 speed={40}
                                 gap={112}>
                                 <div className="flex items-center">
-                                    <V0Icon size={35} aria-label="v0 Logo" className='text-foreground mx-auto' />
-                                </div>
-                                <div className="flex items-center">
-                                    <VercelWordmarkIcon size={20} aria-label="Vercel Logo"
+                                    <GlobantLogoIcon size={20} aria-label="Globant Logo"
                                         className='text-foreground mx-auto' />
                                 </div>
                                 <div className="flex items-center">

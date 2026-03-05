@@ -105,6 +105,7 @@ export default function FooterSection() {
                 <MapPin className="h-4 w-4 shrink-0" />
                 <span>{t.footer.location} 🇦🇷</span>
               </div>
+
               <div className="flex items-center gap-4">
                 {socials.map((social) => (
                   <a

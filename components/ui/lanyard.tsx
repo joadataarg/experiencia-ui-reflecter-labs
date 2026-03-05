@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
-import {useEffect, useRef, useState} from 'react';
-import {Canvas, extend, useFrame} from '@react-three/fiber';
-import {useGLTF, useTexture, Environment, Lightformer} from '@react-three/drei';
+import { useEffect, useRef, useState } from 'react';
+import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import {
     BallCollider,
     CuboidCollider,
@@ -12,7 +12,7 @@ import {
     useSphericalJoint,
     RigidBodyProps
 } from '@react-three/rapier';
-import {MeshLineGeometry, MeshLineMaterial} from 'meshline';
+import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 import clsx from 'clsx';
 
@@ -21,7 +21,7 @@ import lanyard from './lanyard.png';
 
 const cardGLB = '/card.glb';
 
-extend({MeshLineGeometry, MeshLineMaterial});
+extend({ MeshLineGeometry, MeshLineMaterial });
 
 // Suppress known upstream warning from @dimforge/rapier3d-compat WASM init
 // See: https://github.com/dimforge/rapier/issues/811
@@ -46,14 +46,14 @@ interface LanyardProps {
 }
 
 export default function Lanyard({
-                                    position = [0, 0, 30],
-                                    gravity = [0, -40, 0],
-                                    fov = 20,
-                                    transparent = true,
-                                    containerClassName,
-                                    cardTextureUrl,
-                                    canvasRef
-                                }: LanyardProps) {
+    position = [0, 0, 30],
+    gravity = [0, -40, 0],
+    fov = 20,
+    transparent = true,
+    containerClassName,
+    cardTextureUrl,
+    canvasRef
+}: LanyardProps) {
     const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
     useEffect(() => {
@@ -67,14 +67,14 @@ export default function Lanyard({
             className={clsx(containerClassName || "relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center")}>
             <Canvas
                 ref={canvasRef}
-                camera={{position, fov}}
+                camera={{ position, fov }}
                 dpr={[1, isMobile ? 1.5 : 2]}
-                gl={{alpha: transparent, preserveDrawingBuffer: true}}
-                onCreated={({gl}) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
+                gl={{ alpha: transparent, preserveDrawingBuffer: true }}
+                onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
             >
-                <ambientLight intensity={Math.PI}/>
+                <ambientLight intensity={Math.PI} />
                 <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-                    <Band isMobile={isMobile} cardTextureUrl={cardTextureUrl}/>
+                    <Band isMobile={isMobile} cardTextureUrl={cardTextureUrl} />
                 </Physics>
                 <Environment blur={0.75}>
                     <Lightformer
@@ -118,7 +118,7 @@ interface BandProps {
     cardTextureUrl?: string;
 }
 
-function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: BandProps) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl }: BandProps) {
     // Using "any" for refs since the exact types depend on Rapier's internals
     const band = useRef<any>(null);
     const fixed = useRef<any>(null);
@@ -140,25 +140,25 @@ function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: B
         linearDamping: 4
     };
 
-    const {nodes, materials} = useGLTF(cardGLB) as any;
+    const { nodes, materials } = useGLTF(cardGLB) as any;
     const texture = useTexture(typeof lanyard === 'string' ? lanyard : lanyard.src) as THREE.Texture;
-    
+
     // Load custom card texture if provided - use state to handle async loading
     const [customCardTexture, setCustomCardTexture] = useState<THREE.Texture | null>(null);
-    
+
     useEffect(() => {
         if (!cardTextureUrl) {
             setCustomCardTexture(null);
             return;
         }
-        
+
         const loader = new THREE.TextureLoader();
         loader.load(cardTextureUrl, (loadedTexture) => {
             loadedTexture.flipY = false;
             loadedTexture.colorSpace = THREE.SRGBColorSpace;
             setCustomCardTexture(loadedTexture);
         });
-        
+
         return () => {
             if (customCardTexture) {
                 customCardTexture.dispose();
@@ -217,7 +217,7 @@ function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: B
             band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
             ang.copy(card.current.angvel());
             rot.copy(card.current.rotation());
-            card.current.setAngvel({x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z});
+            card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
         }
     });
 
@@ -227,15 +227,15 @@ function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: B
     return (
         <>
             <group position={[0, 4, 0]}>
-                <RigidBody ref={fixed} {...segmentProps} type={'fixed' as RigidBodyProps['type']}/>
+                <RigidBody ref={fixed} {...segmentProps} type={'fixed' as RigidBodyProps['type']} />
                 <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
-                    <BallCollider args={[0.1]}/>
+                    <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
-                    <BallCollider args={[0.1]}/>
+                    <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
-                    <BallCollider args={[0.1]}/>
+                    <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody
                     position={[2, 0, 0]}
@@ -243,7 +243,7 @@ function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: B
                     {...segmentProps}
                     type={dragged ? ('kinematicPosition' as RigidBodyProps['type']) : ('dynamic' as RigidBodyProps['type'])}
                 >
-                    <CuboidCollider args={[0.8, 1.125, 0.01]}/>
+                    <CuboidCollider args={[0.8, 1.125, 0.01]} />
                     <group
                         scale={2.25}
                         position={[0, -1.2, -0.05]}
@@ -268,13 +268,13 @@ function Band({maxSpeed = 50, minSpeed = 0, isMobile = false, cardTextureUrl}: B
                                 metalness={0.8}
                             />
                         </mesh>
-                        <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3}/>
-                        <mesh geometry={nodes.clamp.geometry} material={materials.metal}/>
+                        <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
+                        <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
                     </group>
                 </RigidBody>
             </group>
             <mesh ref={band}>
-                <meshLineGeometry/>
+                <meshLineGeometry />
                 <meshLineMaterial
                     color="white"
                     depthTest={false}
