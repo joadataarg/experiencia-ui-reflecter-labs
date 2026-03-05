@@ -106,7 +106,7 @@ export default function FooterSection() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-5 lg:col-start-6">
             <div>
               <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">
-                Company
+                Empresa
               </h3>
               <ul className="mt-4 flex flex-col gap-3" role="list">
                 {navigation.company.map((item) => (
