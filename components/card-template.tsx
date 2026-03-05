@@ -92,6 +92,13 @@ const CardTemplate = forwardRef<CardTemplateRef, CardTemplateProps>(
       onTextureReady(dataUrl);
     };
 
+    // Automatically capture whenever data changes or the image loads
+    useEffect(() => {
+      if (baseImage) {
+        captureTexture();
+      }
+    }, [baseImage, userName, city, date]);
+
     const exportCard = () => {
       const CROP_BOTTOM = 334;
       const EXPORT_HEIGHT = CANVAS_SIZE - CROP_BOTTOM;
